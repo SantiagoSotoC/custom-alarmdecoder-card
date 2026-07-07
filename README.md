@@ -6,9 +6,16 @@ A minimalist alarm panel card for Home Assistant with zone bypass support, desig
 
 - **Alarm Control**: Arm away, arm home (stay), and disarm
 - **Zone Bypass**: Toggle bypass for individual zones directly from the card
-- **Display Support**: Show alarm code input or external display entity
-- **Visual Status**: Color-coded status indicator (green=disarmed, orange=armed, red=triggered)
-- **Clean UI**: Modern, minimalist design that fits any dashboard
+- **Auto-Detect Bypass Entities**: Automatically loads bypass switches from Custom AlarmDecoder
+- **Display Support**: Show alarm code input or external display entity (LCD line)
+- **Visual Status**: Color-coded status indicator with animated effects
+- **Smart Editor**: Visual editor with entity dropdowns for easy configuration
+
+## Visual Effects
+
+- **Arming**: Blue sweep animation on display
+- **Armed**: Orange glow on display
+- **Triggered**: Red flashing border effect
 
 ## Installation
 
@@ -51,22 +58,28 @@ title: My Alarm
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
 | `entity` | string | Yes | Alarm control panel entity ID |
-| `display_entity` | string | No | Sensor entity to show on display |
+| `display_entity` | string | No | Sensor entity to show on LCD display |
 | `title` | string | No | Card title (default: "Alarma") |
 
 ## Usage
 
 1. **Enter Code**: Use the numeric keypad to enter your alarm code
 2. **Arm Away**: Press "Salida" button after entering code
-3. **Arm Home**: Press "Estancia" button after entering code
+3. **Arm Home**: Press "Noche" button after entering code
 4. **Disarm**: Press "Desarmar" button after entering code
 5. **Bypass Zones**: Toggle the switch next to any zone to bypass it
 
+## Editor
+
+The card includes a visual editor that:
+- Shows dropdown selectors for alarm and display entities
+- Automatically detects bypass entities from Custom AlarmDecoder
+- Displays entity counts and hints for each field
+
 ## Compatibility
 
-- Works with any alarm control panel entity
-- Tested with [Custom AlarmDecoder](https://github.com/SantiagoSotoC/ha_custom_components) integration
-- Should work with other alarm integrations that follow HA standards
+- Requires [Custom AlarmDecoder](https://github.com/SantiagoSotoC/ha_custom_components) integration
+- Uses LitElement 2.4.0 for the editor component
 
 ## License
 
